@@ -1,0 +1,63 @@
+{
+  "name": "metismenujs",
+  "version": "1.2.1",
+  "description": "MetisMenu: Collapsible menu plugin with Vanilla-JS",
+  "main": "dist/cjs/index.js",
+  "module": "dist/modules/index.js",
+  "browser": "dist/metismenujs.js",
+  "unpkg": "dist/metismenujs.min.js",
+  "jsdelivr": "dist/metismenujs.min.js",
+  "typings": "dist/types/index.d.ts",
+  "sass": "scss/metismenujs.scss",
+  "style": "dist/metismenujs.css",
+  "files": [
+    "dist",
+    "src",
+    "scss"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "minify": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/metismenujs.js.map,includeSources,url=metismenujs.min.js.map\" --output dist/metismenujs.min.js dist/metismenujs.js",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "tsc": "tsc -p tsconfig.json --declaration --declarationDir dist/types --outDir dist/modules"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": "onokumus/metismenujs",
+  "keywords": [
+    "accordion",
+    "menu",
+    "metis",
+    "metisMenu",
+    "toggle"
+  ],
+  "author": "Osman Nuri Okumus <onokumus@gmail.com> (https://github.com/onokumus)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onokumus/metismenujs/issues"
+  },
+  "homepage": "https://github.com/onokumus/metismenujs#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "@rollup/plugin-typescript": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-typescript": "^8.0.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "node-sass": "^4.14.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.5",
+    "rollup": "^2.18.1",
+    "rollup-plugin-postcss": "^3.1.2",
+    "typescript": "^3.9.5",
+    "uglify-js": "^3.10.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

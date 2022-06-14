@@ -1,0 +1,32 @@
+{
+  "name": "vue-switches",
+  "version": "2.0.1",
+  "description": "An on/off switch component for Vue.js with theme support.",
+  "main": "src/switches.vue",
+  "scripts": {
+    "compile": "node-sass src/switches.scss dist/switches.css",
+    "prepublish": "npm run compile"
+  },
+  "browserify": {
+    "transform": [
+      "vueify"
+    ]
+  },
+  "keywords": [
+    "switches",
+    "component",
+    "vue"
+  ],
+  "author": "Drew J Bartlett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drewjbartlett/vue-switches/issues"
+  },
+  "homepage": "https://github.com/drewjbartlett/vue-switches#readme",
+  "dependencies": {
+    "vue": "^2.2.6"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.3"
+  }
+}
