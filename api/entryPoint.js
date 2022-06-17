@@ -11,7 +11,7 @@ export const registerUrl = SERVER_BASE_URL + 'register';
 //***************** login *********************
 export const login = SERVER_BASE_URL + 'login';
 //***************** Update Password *********************
-export const updatePassword = SERVER_BASE_URL + 'updatePassword';
+export const updatePassword = SERVER_BASE_URL_API + 'updatePassword';
 
 //***************** Logout File *********************
 export const resetPassword = SERVER_BASE_URL + 'reset/password';

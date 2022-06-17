@@ -18,7 +18,10 @@ export default function auth({next, router}) {
     // If token expired
     let token = localStorage.getItem('token');
     if (!checkTokenValidity(token)) {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('roles');
+        localStorage.removeItem('userId');
         return router.push({name: 'login'});
     }
     return next();

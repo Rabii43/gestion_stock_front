@@ -26,7 +26,7 @@
                     <div v-if="list.image">
                       <img
                           class="rounded-circle avatar-xs"
-                          :src="list.image"
+                          :src="baseURL+list.image"
                           alt
                       />
                     </div>
@@ -97,6 +97,7 @@
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 import Swal from "sweetalert2";
+import {IMAGE_URL} from "../../../api/entryPoint";
 
 /**
  * Users component
@@ -113,7 +114,7 @@ export default {
       items: [],
       currentPage: 1,
       totalPages: 0,
-      baseURL: process.env.API_URL,
+      baseURL: IMAGE_URL,
     };
   },
   created() {

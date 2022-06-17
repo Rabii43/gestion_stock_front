@@ -8,7 +8,7 @@
               <div class="col-7">
                 <div class="text-primary p-4">
                   <h5 class="text-primary">Bienvenue !</h5>
-                  <p>Connectez-vous à Mystock</p>
+                  <p>Connectez-vous à Géstion de stock</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -229,14 +229,13 @@ export default {
           // If user enabled
           if (decoded.isActive === true) {
             this.$store.state.auth.isAuth = true;
-            this.$router.push('/users')
+            this.$router.push('/')
                 .catch((e) => {
                   if (!isNavigationFailure(e, NavigationFailureType.redirected)) {
                     Promise.reject(e)
                   }
                 })
           } else {
-            //
             this.isAuthError = true;
             this.authError = "Votre compte n'est pas encore activé!";
           }
