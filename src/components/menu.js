@@ -13,18 +13,18 @@ export const menuItems = [
             text: "menuitems.dashboards.badge"
         },
         subItems: [
-            // {
-            //     id: 3,
-            //     label: "menuitems.dashboards.list.default",
-            //     link: "/",
-            //     parentId: 2
-            // },
-            // {
-            //     id: 3,
-            //     label: "menuitems.dashboards.list.saas",
-            //     link: "/marche",
-            //     parentId: 2
-            // },
+            {
+                id: 3,
+                label: "menuitems.dashboards.list.default",
+                link: "/",
+                parentId: 2
+            },
+            {
+                id: 3,
+                label: "menuitems.dashboards.list.saas",
+                link: "/marche",
+                parentId: 2
+            },
             {
                 id: 4,
                 label: "menuitems.dashboards.list.users",

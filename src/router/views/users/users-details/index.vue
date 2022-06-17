@@ -153,7 +153,7 @@
         </div>
       </div>
     </div>
-    <div v-if="toEditProfile" class="card overflow-hidden">
+    <div v-if=" toEditProfile" class="card overflow-hidden">
       <div class="card-body pt-0">
         <b-alert
             v-model="isRegisterError"
@@ -216,8 +216,8 @@ import Layout from "../../../layouts/main";
 import appConfig from "@/app.config.json";
 import PageHeader from "@/components/page-header";
 import {email, required} from "vuelidate/lib/validators";
-import {updatePassword, usersDetails} from "../../../../../api/entryPoint";
-import axios from "axios";
+import {IMAGE_URL, updatePassword, usersDetails} from "../../../../../api/entryPoint";
+import api from "../../../../services/axiosHeader";
 
 /**
  * Users Details Component
@@ -240,7 +240,7 @@ export default {
     return {
       title: "Mon profil",
       items: [],
-      baseURL: process.env.API_URL,
+      baseURL: IMAGE_URL,
       toEditProfile: false,
       user: {
         email: "",
@@ -286,41 +286,41 @@ export default {
     },
     // Set an absolute path for image
     pathImage(name) {
-      return this.baseURL + "/uploads/images/" + name;
+      return this.baseURL + name;
     },
     // Update User
     tryToModify(event) {
       event.preventDefault();
       this.submitted = true;
       this.$v.$touch();
-      // if (!this.$v.$invalid && this.ValidatePhoneNumber(this.user.phone)) {
-      //   let data;
-      //   // If we have an image to upload we use a formData else we use json
-      //   data = new FormData();
-      //   for (let key in this.user) {
-      //     data.append(key, this.user[key]);
-      //   }
-      //   data.append("image", this.file);
-      //   // Send user data
-      //   axios.post(usersDetails + this.$route.params.id, data
-      //   ).then((res) => {
-      //     if (res.data.code === 200) {
-      //       this.registerSuccess = true;
-      //       // refresh user details
-      //       this.getUsersDetails();
-      //       this.getUsersDetailsNav();
-      //       this.toEditProfile = false;
-      //     } else {
-      //       this.isRegisterError = true;
-      //       this.regError = "échec de la modification de l'utilisateur";
-      //     }
-      //   }).catch((error) => {
-      //     this.isRegisterError = true;
-      //     this.regError = "échec de la modification de l'utilisateur";
-      //   });
-      // } else {
-      //   return;
-      // }
+      if (!this.$v.$invalid) {
+        let data;
+        // If we have an image to upload we use a formData else we use json
+        data = new FormData();
+        for (let key in this.user) {
+          data.append(key, this.user[key]);
+        }
+        data.append("image", this.file);
+        data.append("username", this.user.firstName+'_'+ this.user.lastName);
+        // Send user data
+        api.post(usersDetails + '/' + this.$route.params.id, data
+        ).then((res) => {
+          if (res.data) {
+            this.$store.dispatch("users/usersDetailsNav", localStorage.getItem('userId'));
+            this.submitted = false;
+            this.registerSuccess = true;
+            // refresh user details
+            this.getUsersDetails();
+            this.getUsersDetailsNav();
+            this.toEditProfile = false;
+          } else {
+            this.isRegisterError = true;
+            this.regError = "échec de la modification de l'utilisateur";
+          }
+        })
+      } else {
+        return;
+      }
     },
     // fill inputs with user data
     matchUserData(res) {
@@ -330,7 +330,7 @@ export default {
     },
     // Update user Password
     tryToUpdatePassword() {
-      axios.post(updatePassword + this.$route.params.id,
+      api.post(updatePassword + '/' + this.$route.params.id,
           this.updatePass
       ).then((res) => {
         if (res.status === 200) {

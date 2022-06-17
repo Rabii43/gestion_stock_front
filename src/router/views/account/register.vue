@@ -8,7 +8,7 @@
               <div class="col-7">
                 <div class="text-primary p-4">
                   <h5 class="text-primary">Bienvenue !</h5>
-                  <p>Créez votre compte Mystock maintenant.</p>
+                  <p>Créez votre compte Gestion de stock maintenant.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">

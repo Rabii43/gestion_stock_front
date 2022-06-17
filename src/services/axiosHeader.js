@@ -27,8 +27,8 @@ api.interceptors.response.use(
                 });
             } else if (error.response.status === 401 && !originalConfig._retry) {
                 originalConfig._retry = true;
-                let data = {"refresh_token": localStorage.getItem('refreshToken')};
-                api.post(refrecheToken, data).then(
+                api.post(refrecheToken,
+                    {"refresh_token": localStorage.getItem('refreshToken')}).then(
                     (res) => {
                         authService.saveToken(res.data.token);
                         authService.saveRefreshToken(res.data.refresh_token);

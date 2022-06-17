@@ -31,7 +31,7 @@ SimpleBar is meant to be as easy to use as possible and lightweight. If you want
 <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 ```
 
-note: you should replace `@latest` to the latest version (ex `@2.4.3`), if you want to lock to a specific version.
+note: you should replace `@latest` to the latest version (ex `@5.3.3`), if you want to lock to a specific version.
 You can find the full list of modules available [there](https://unpkg.com/simplebar@latest/dist/).
 
 ### Usage
@@ -199,6 +199,14 @@ forceVisible: true|'x'|'y' (default to `false`)
 
 By default, SimpleBar behave like `overflow: auto`.
 
+### ariaLabel
+
+You can set custom aria-label attribute for users with screen reader using the `ariaLabel` option:
+
+```
+ariaLabel: 'Your label' (default to `scrollable content`)
+```
+
 #### direction (RTL support)
 
 You can activate RTL support by passing the `direction` option:
@@ -297,7 +305,7 @@ A common usecase is to only want SimpleBar on desktop/wider screens, but instead
 For example if you want it only on desktop you can first test for screen size using `matchMedia`:
 
 ```js
-if (window.matchMedia('(minwidth: 600px)') {
+if (window.matchMedia('(min-width: 600px)').matches) {
   new SimpleBar(..)
 }
 ```
